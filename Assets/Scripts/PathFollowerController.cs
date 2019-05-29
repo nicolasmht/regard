@@ -48,10 +48,14 @@ public class PathFollowerController : MonoBehaviour {
                 // Move object in target
                 objectsMove[a].transform.position = Vector3.MoveTowards(objectsMove[a].transform.position, targetPoint.position, speed * Time.deltaTime);
 
+                objectsMove[a].GetComponent<Rigidbody>().MovePosition(objectsMove[a].transform.position);
+
                 // Calculate distance between object / target
                 distanceTarget = Vector3.Distance(objectsMove[a].transform.position, targetPoint.position);
 
-                if (distanceTarget < 0.1f && index != pathParent.childCount) {
+                //if (distanceTarget < 0.1f && index != pathParent.childCount) {
+                if (distanceTarget < 25.0f && index != pathParent.childCount)
+                {
 
                     index++;
 
